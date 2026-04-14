@@ -12,8 +12,7 @@ defmodule CloudflareAccessEx.Application do
         []
 
     children =
-      domains
-      |> Enum.map(fn domain ->
+      Enum.map(domains, fn domain ->
         {JwksStrategy, [domain: domain]}
       end)
 

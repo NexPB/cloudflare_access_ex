@@ -59,8 +59,9 @@ defmodule CloudflareAccessEx.Test.Simulator do
   def start_test_server(jwks) do
     TestServer.add("/cdn-cgi/access/certs",
       to: fn conn ->
-        Plug.Conn.send_resp(
-          conn,
+        conn
+        |> Plug.Conn.put_resp_content_type("application/json")
+        |> Plug.Conn.send_resp(
           200,
           Jason.encode!(%{
             keys: jwks
@@ -73,8 +74,9 @@ defmodule CloudflareAccessEx.Test.Simulator do
   def start_broken_test_server do
     TestServer.add("/cdn-cgi/access/certs",
       to: fn conn ->
-        Plug.Conn.send_resp(
-          conn,
+        conn
+        |> Plug.Conn.put_resp_content_type("application/json")
+        |> Plug.Conn.send_resp(
           502,
           Jason.encode!(%{
             keys: []

@@ -47,10 +47,10 @@ defmodule CloudflareAccessEx.MixProject do
       {:ex_check, "~> 0.15.0", only: :test, runtime: false},
       {:ex_doc, "~> 0.27", only: [:dev, :test], runtime: false},
       {:mix_audit, "~> 2.0", only: :test, runtime: false},
-      {:httpoison, "~> 1.7 or ~> 2.0"},
       {:joken, "~> 2.6"},
       {:joken_jwks, "~> 1.7.0"},
       {:plug, "~> 1.14"},
+      {:req, "~> 0.5.10 and < 0.5.11"},
       {:test_server, "~> 0.1.13", only: :test}
     ]
   end
