@@ -2,14 +2,14 @@ defmodule CloudflareAccessEx.MixProject do
   use Mix.Project
 
   @source_url "https://github.com/primait/cloudflare_access_ex"
-  @version "0.1.5"
+  @version "0.2.0"
 
   def project do
     [
       app: :cloudflare_access_ex,
       description: "An elixir library to verify Cloudflare Access application tokens",
       version: @version,
-      elixir: "~> 1.13",
+      elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -55,7 +55,7 @@ defmodule CloudflareAccessEx.MixProject do
       {:joken, "~> 2.6"},
       {:joken_jwks, "~> 1.7.0"},
       {:plug, "~> 1.14"},
-      {:req, "~> 0.5.10 and < 0.5.11"},
+      {:req, "~> 0.5"},
       {:test_server, "~> 0.1.13", only: :test}
     ]
   end
