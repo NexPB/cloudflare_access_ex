@@ -13,16 +13,21 @@ defmodule CloudflareAccessEx.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
-      preferred_cli_env: [
+      package: package(),
+      docs: docs()
+    ]
+  end
+
+  def cli do
+    [
+      preferred_envs: [
         check: :test,
         credo: :test,
         dialyzer: :test,
         doctor: :test,
         sobelow: :test,
         "deps.audit": :test
-      ],
-      package: package(),
-      docs: docs()
+      ]
     ]
   end
 
