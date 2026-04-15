@@ -61,7 +61,7 @@ defmodule CloudflareAccessEx.Test.Simulator do
       to: fn conn ->
         conn
         |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.send_resp(
+        |> Plug.Conn.resp(
           200,
           Jason.encode!(%{
             keys: jwks
@@ -76,7 +76,7 @@ defmodule CloudflareAccessEx.Test.Simulator do
       to: fn conn ->
         conn
         |> Plug.Conn.put_resp_content_type("application/json")
-        |> Plug.Conn.send_resp(
+        |> Plug.Conn.resp(
           502,
           Jason.encode!(%{
             keys: []

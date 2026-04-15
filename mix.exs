@@ -46,17 +46,24 @@ defmodule CloudflareAccessEx.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:joken, "~> 2.6"},
+      {:joken_jwks, "~> 1.7.0"},
+      {:plug, "~> 1.14"},
+      {:req, "~> 0.5"}
+    ] ++ deps_test()
+  end
+
+  defp deps_test do
+    [
+      {:bandit, "~> 1.6", only: :test},
       {:credo, "~> 1.7", only: :test, runtime: false},
       {:dialyxir, "~> 1.3", only: :test, runtime: false},
       {:doctor, "~> 0.21.0", only: [:dev, :test], runtime: false},
       {:ex_check, "~> 0.15.0", only: :test, runtime: false},
       {:ex_doc, "~> 0.27", only: [:dev, :test], runtime: false},
       {:mix_audit, "~> 2.0", only: :test, runtime: false},
-      {:joken, "~> 2.6"},
-      {:joken_jwks, "~> 1.7.0"},
-      {:plug, "~> 1.14"},
-      {:req, "~> 0.5"},
-      {:test_server, "~> 0.1.13", only: :test}
+      {:test_server, "~> 0.1.22", only: :test},
+      {:x509, "~> 0.9.2", only: :test, runtime: false}
     ]
   end
 

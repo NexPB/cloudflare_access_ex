@@ -120,7 +120,9 @@ defmodule CloudflareAccessEx.JwksStrategy do
 
   @spec fetch_signers(String.t()) :: {:ok, %{String.t() => Joken.Signer.t()}} | {:error, term()}
   defp fetch_signers(url) do
-    with {:ok, %Req.Response{status: 200, body: %{"keys" => keys}}} <- Req.get(url: url) do
+    # The GenServer already owns retry timing, so disable Req's built-in retries
+    # to keep fetch failures fast and avoid duplicate backoff loops in tests and production.
+    with {:ok, %Req.Response{status: 200, body: %{"keys" => keys}}} <- Req.get(url: url, retry: false) do
       signers = create_signers(keys)
 
       Logger.info("Created #{Enum.count(signers)} signers from keys at #{url}")
