@@ -1,20 +1,19 @@
 name: CD
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:  
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - name: Setup Elixir
-        uses: erlef/setup-beam@5304e04ea2b355f03681464e683d92e3b2f18451 # ratchet:erlef/setup-beam@v1
+        uses: erlef/setup-beam@988e02bfe678367a02564f65ca2e37726dc0268f # ratchet:erlef/setup-beam@v1.9.0
         with:
-          otp-version: '24'
-          elixir-version: '1.13'
+          otp-version: '28.3'
+          elixir-version: '1.19.4'
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v6
       - name: setup hex
         run: |
           mix local.hex --force
